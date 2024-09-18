@@ -1,6 +1,6 @@
 #include "brightener.h"
 
-uint8_t brightenPixel(uint8_t inputPixel, uint8_t brighteningGrayscale, int& attenuatedPixelCount) {
+uint8_t brightenPixel(const uint8_t inputPixel, const uint8_t brighteningGrayscale, int& attenuatedPixelCount)  {
     uint8_t brightened = inputPixel;
     if (int(inputPixel) + brighteningGrayscale > 255) {
         ++attenuatedPixelCount;
@@ -12,7 +12,7 @@ uint8_t brightenPixel(uint8_t inputPixel, uint8_t brighteningGrayscale, int& att
     return brightened;
 }
 
-shared_ptr<Image> BrightenWholeImage(shared_ptr<Image> inputImage, int& attenuatedPixelCount) {
+shared_ptr<Image>BrightenWholeImage(const shared_ptr<Image> inputImage, int& attenuatedPixelCount) {
     // For brightening, we add a certain grayscale (25) to every pixel.
     // While brightening, some pixels may cross the max brightness. They are
     // called 'attenuated' pixels
@@ -31,7 +31,9 @@ shared_ptr<Image> BrightenWholeImage(shared_ptr<Image> inputImage, int& attenuat
     return brightenedImage;
 }
 
-shared_ptr<Image> AddBrighteningImage(shared_ptr<Image> inputImage, shared_ptr<Image> imageToAdd,
+
+
+shared_ptr<Image>AddBrighteningImage(const shared_ptr<Image> inputImage, const shared_ptr<Image> imageToAdd,
     int& attenuatedPixelCount) {
     // Try converting this into an exception, so callers don't always need to check the returned bool
     // if (imageToAdd->m_rows != m_inputImage->m_rows || imageToAdd->m_columns != m_inputImage->m_columns) {
