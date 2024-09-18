@@ -31,6 +31,8 @@ shared_ptr<Image>BrightenWholeImage(const shared_ptr<Image> inputImage, int& att
     return brightenedImage;
 }
 
+
+
 shared_ptr<Image>AddBrighteningImage(const shared_ptr<Image> inputImage, const shared_ptr<Image> imageToAdd,
     int& attenuatedPixelCount) {
     // Try converting this into an exception, so callers don't always need to check the returned bool
